@@ -53,7 +53,14 @@ defmodule SalaryCalculator do
   end
 
   def extra_hour(quantity, hour_value, percent) do
-    Float.round(quantity * hour_value * (1 + percent /100), 2)
+    cond do
+      percent == 60 -> 
+        Float.round(quantity * hour_value * 1.6, 2)
+      percent == 110 ->
+        Float.round(quantity * hour_value * 2.1, 2)
+    end
+
+
   end
 
   def quinzena(hour_value) do
